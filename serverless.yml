@@ -1,0 +1,37 @@
+service: serverless-offline-mapping-templates
+frameworkVersion: '2'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  lambdaHashingVersion: 20201221
+
+functions:
+  mainFunc:
+    handler: api/index.handler
+    memorySize: 128
+    events:
+      - http: 
+          path: gettime
+          method: get
+          integration: lambda
+          request:
+            passThrough: NEVER
+            template:
+              application/json: '{ "triggerError" : "$input.params(''trigger_error'')"  }'
+          response:
+            statusCodes:
+              200:
+                pattern: ''
+                headers:
+                  Content-Type: "'application/json'"
+                template: '{ "output" : "Current time is $input.path(''$'').currentTime" }'
+              400:
+                pattern: '.*error.*'
+                headers:
+                  Content-Type: "'application/json'"
+                template: '{ "output" : "Failed to get current time." }'

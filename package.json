@@ -1,0 +1,23 @@
+{
+  "name": "serverless-offline-mapping-templates",
+  "version": "1.0.0",
+  "description": "Sample project for an AWS API Gateway that uses mapping templates. This is meant to demonstrate the issue in serverless offline wherein the response is not being transformed by the mapping templates.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enpidev/serverless-offline-mapping-templates.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enpidev/serverless-offline-mapping-templates/issues"
+  },
+  "homepage": "https://github.com/enpidev/serverless-offline-mapping-templates#readme",
+  "devDependencies": {
+    "serverless-offline": "^7.0.0"
+  }
+}
